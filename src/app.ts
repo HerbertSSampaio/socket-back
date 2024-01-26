@@ -24,13 +24,12 @@ class App {
             // Enviar mensagem a cada 20 segundos
             
             const intervalId = setInterval(() => {
-                console.log("enviou uma", this.position, this.user.length, this.user[this.position])
                 socket.emit('intervalMessage', this.user[this.position]);
                 this.position = this.position + 1;
                 if(this.position > this.user.length - 1) {
                     this.position = 0;
                 }
-            }, 20000);
+            }, 10000);
 
             socket.on('disconnect', () => {
                 console.log('Usuário desconectado');
